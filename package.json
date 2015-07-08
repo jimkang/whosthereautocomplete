@@ -1,0 +1,33 @@
+{
+  "name": "bdd-poetry",
+  "version": "1.0.0",
+  "description": "Does some cool things.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jimkang/bdd-poetry.git"
+  },
+  "keywords": [],
+  "author": "Jim Kang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimkang/bdd-poetry/issues"
+  },
+  "homepage": "https://github.com/jimkang/bdd-poetry",
+  "devDependencies": {
+    "tape": "^3.0.3"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "autocompl": "^1.1.0",
+    "call-next-tick": "^1.1.2",
+    "iscool": "^1.1.4",
+    "jsonfile": "^2.2.1",
+    "probable": "^1.7.0",
+    "twit": "^1.1.20",
+    "wordnok": "^2.2.1"
+  }
+}

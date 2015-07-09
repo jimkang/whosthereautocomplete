@@ -48,9 +48,9 @@ function jokeItUp(opts, done) {
 }
 
 var jokeTemplate = 'Knock knock!\n' + 
-  '\tWho\'s there?\n' + 
+  '    Who\'s there?\n' + 
   '%base%\n' +
-  '\t%base% who?\n' + 
+  '    %base% who?\n' + 
   '%whosthere%!';
 
 function formatJoke(base, whosThere) {

@@ -6,17 +6,17 @@ var testCases = [
   {
     base: 'hello',
     expected: 'Knock knock!\n' + 
-      '\tWho\'s there?\n' + 
+      '    Who\'s there?\n' + 
       'Hello\n' +
-      '\tHello who?\n' + 
+      '    Hello who?\n' + 
       'Hello kitty!'
   },
   {
     base: 'meerkats',
     expected: 'Knock knock!\n' + 
-      '\tWho\'s there?\n' + 
+      '    Who\'s there?\n' + 
       'Meerkats\n' +
-      '\tMeerkats who?\n' + 
+      '    Meerkats who?\n' + 
       'Meerkats facts!'
   }
 ];

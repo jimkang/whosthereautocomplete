@@ -25,6 +25,10 @@ Usage
 
     make run
 
+Try it without posting:
+
+    node post-joke.js --dry
+
 Tests
 -----
 

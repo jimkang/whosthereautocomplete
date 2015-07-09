@@ -2,6 +2,7 @@ var dropEndPuncRegex = /\W$/;
 var dropEndPoemText = / poem$/;
 var specialTenseRegex = /^(\w+)(:?ing|ed|s) /;
 var createIsCool = require('iscool');
+var isNotAutoCompleteNoise = require('./is-not-autocomplete-noise');
 
 var iscool = createIsCool();
 
@@ -28,7 +29,9 @@ function jokeItUp(opts, done) {
 
       for (var i = 0; i < suggestions.length; ++i) {
         var suggestion = suggestions[i];
-        if (iscool(suggestion) && suggestion !== base) {
+        if (suggestion !== base.toLowerCase() && iscool(suggestion) &&
+          isNotAutoCompleteNoise(suggestion)) {
+
           whosThere = suggestion;
           break;
         }        

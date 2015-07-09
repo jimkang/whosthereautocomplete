@@ -26,6 +26,7 @@
     "call-next-tick": "^1.1.2",
     "iscool": "^1.1.4",
     "jsonfile": "^2.2.1",
+    "lodash": "^3.10.0",
     "probable": "^1.7.0",
     "twit": "^1.1.20",
     "wordnok": "^2.2.1"

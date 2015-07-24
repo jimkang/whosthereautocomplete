@@ -9,7 +9,8 @@ var testCases = [
       '    Who\'s there?\n' + 
       'Hello\n' +
       '    Hello who?\n' + 
-      'Hello kitty!'
+      'Hello kitty!',
+    expectedErrorMessage: undefined
   },
   {
     base: 'meerkats',
@@ -17,14 +18,21 @@ var testCases = [
       '    Who\'s there?\n' + 
       'Meerkats\n' +
       '    Meerkats who?\n' + 
-      'Meerkats facts!'
+      'Meerkats facts!',
+    expectedErrorMessage: undefined
+  },
+  {
+    base: 'indio',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
 function mockAutocompl(partialSearchTerm, done) {
   var cannedResults = {
     'hello': ['hello kitty'],
-    'meerkats': ['meerkats facts']
+    'meerkats': ['meerkats facts'],
+    'indio': ['indio translation'], // Should be NOT be used in joke.
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }
@@ -45,7 +53,16 @@ function runTest(testCase) {
 
     function checkJoke(error, joke) {
       console.log(joke);
-      t.ok(!error, 'No error while making joke.');
+      if (testCase.expectedErrorMessage) {
+        t.equal(
+          error.message, testCase.expectedErrorMessage, 'Correct error given.'
+        );
+      }
+      else {
+        t.ok(!error, 'No error while making joke.');
+      }
+
+
       t.deepEqual(joke, testCase.expected, 'Joke is correct.');
     }
   });

@@ -25,6 +25,16 @@ var testCases = [
     base: 'indio',
     expected: undefined,
     expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'aliases',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'activism',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
@@ -32,7 +42,9 @@ function mockAutocompl(partialSearchTerm, done) {
   var cannedResults = {
     'hello': ['hello kitty'],
     'meerkats': ['meerkats facts'],
-    'indio': ['indio translation'], // Should be NOT be used in joke.
+    'indio': ['indio ca'], // Should be NOT be used in joke.
+    'aliases': ['aliases band'],
+    'activism': ['activism quotes']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }

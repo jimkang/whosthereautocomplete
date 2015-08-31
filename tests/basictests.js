@@ -35,6 +35,16 @@ var testCases = [
     base: 'activism',
     expected: undefined,
     expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'chandelier',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'Neo-Platonism',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
@@ -44,7 +54,9 @@ function mockAutocompl(partialSearchTerm, done) {
     'meerkats': ['meerkats facts'],
     'indio': ['indio ca'], // Should be NOT be used in joke.
     'aliases': ['aliases band'],
-    'activism': ['activism quotes']
+    'activism': ['activism quotes'],
+    'chandelier': ['chandelier lyrics'],
+    'Neo-Platonism': ['neoplatonism']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }

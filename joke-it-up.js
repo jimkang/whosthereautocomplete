@@ -3,6 +3,7 @@ var dropEndPoemText = / poem$/;
 var specialTenseRegex = /^(\w+)(:?ing|ed|s) /;
 var createIsCool = require('iscool');
 var isNotAutoCompleteNoise = require('./is-not-autocomplete-noise');
+var isHyphenationVariation = require('./is-hyphenation-variation');
 
 var iscool = createIsCool();
 
@@ -29,7 +30,9 @@ function jokeItUp(opts, done) {
 
       for (var i = 0; i < suggestions.length; ++i) {
         var suggestion = suggestions[i];
-        if (suggestion !== base.toLowerCase() && iscool(suggestion) &&
+        if (suggestion !== base.toLowerCase() &&
+          iscool(suggestion) &&
+          !isHyphenationVariation(base, suggestion) &&
           isNotAutoCompleteNoise(suggestion)) {
 
           whosThere = suggestion;

@@ -13,6 +13,7 @@ var autocompleteNoise = [
   'antonym',
   'band',
   'activism',
+  'lyrics',
 
   'al',
   'ak',

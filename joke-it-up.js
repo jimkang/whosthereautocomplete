@@ -7,6 +7,7 @@ var isHyphenationVariation = require('./is-hyphenation-variation');
 var isPluralization = require('./is-pluralization');
 var isWhitespaceVariation = require('./is-whitespace-variation');
 var iscool = createIsCool();
+var probable = require('probable');
 
 function jokeItUp(opts, done) {
   var base;
@@ -28,6 +29,7 @@ function jokeItUp(opts, done) {
     }
     else {
       var whosThere;
+      suggestions = probable.shuffle(suggestions);
 
       for (var i = 0; i < suggestions.length; ++i) {
         var suggestion = suggestions[i];

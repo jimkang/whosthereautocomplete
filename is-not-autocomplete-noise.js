@@ -15,6 +15,7 @@ var autocompleteNoise = [
   'activism',
   'lyrics',
   'quotes',
+  'spelling',
 
   'al',
   'ak',

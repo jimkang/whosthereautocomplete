@@ -50,6 +50,11 @@ var testCases = [
     base: 'bookend',
     expected: undefined,
     expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'childishness',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
@@ -62,7 +67,8 @@ function mockAutocompl(partialSearchTerm, done) {
     'activism': ['activism quotes'],
     'chandelier': ['chandelier lyrics'],
     'Neo-Platonism': ['neoplatonism'],
-    'bookend': ['bookends']
+    'bookend': ['bookends'],
+    'childishness': ['childishness quotes']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }

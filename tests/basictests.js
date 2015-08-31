@@ -45,6 +45,11 @@ var testCases = [
     base: 'Neo-Platonism',
     expected: undefined,
     expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'bookend',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
@@ -56,7 +61,8 @@ function mockAutocompl(partialSearchTerm, done) {
     'aliases': ['aliases band'],
     'activism': ['activism quotes'],
     'chandelier': ['chandelier lyrics'],
-    'Neo-Platonism': ['neoplatonism']
+    'Neo-Platonism': ['neoplatonism'],
+    'bookend': ['bookends']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }

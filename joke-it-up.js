@@ -4,6 +4,7 @@ var specialTenseRegex = /^(\w+)(:?ing|ed|s) /;
 var createIsCool = require('iscool');
 var isNotAutoCompleteNoise = require('./is-not-autocomplete-noise');
 var isHyphenationVariation = require('./is-hyphenation-variation');
+var isPluralization = require('./is-pluralization');
 
 var iscool = createIsCool();
 
@@ -33,6 +34,7 @@ function jokeItUp(opts, done) {
         if (suggestion !== base.toLowerCase() &&
           iscool(suggestion) &&
           !isHyphenationVariation(base, suggestion) &&
+          !isPluralization(base, suggestion) &&
           isNotAutoCompleteNoise(suggestion)) {
 
           whosThere = suggestion;

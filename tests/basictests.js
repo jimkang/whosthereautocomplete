@@ -55,6 +55,11 @@ var testCases = [
     base: 'childishness',
     expected: undefined,
     expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'birthrate',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
@@ -68,7 +73,8 @@ function mockAutocompl(partialSearchTerm, done) {
     'chandelier': ['chandelier lyrics'],
     'Neo-Platonism': ['neoplatonism'],
     'bookend': ['bookends'],
-    'childishness': ['childishness quotes']
+    'childishness': ['childishness quotes'],
+    'birthrate': ['birth rate']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }

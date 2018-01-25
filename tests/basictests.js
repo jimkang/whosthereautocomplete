@@ -5,19 +5,21 @@ var callNextTick = require('call-next-tick');
 var testCases = [
   {
     base: 'hello',
-    expected: 'Knock knock!\n' + 
-      '    Who\'s there?\n' + 
+    expected:
+      'Knock knock!\n' +
+      "    Who's there?\n" +
       'Hello\n' +
-      '    Hello who?\n' + 
+      '    Hello who?\n' +
       'Hello kitty!',
     expectedErrorMessage: undefined
   },
   {
     base: 'meerkats',
-    expected: 'Knock knock!\n' + 
-      '    Who\'s there?\n' + 
+    expected:
+      'Knock knock!\n' +
+      "    Who's there?\n" +
       'Meerkats\n' +
-      '    Meerkats who?\n' + 
+      '    Meerkats who?\n' +
       'Meerkats facts!',
     expectedErrorMessage: undefined
   },
@@ -65,16 +67,16 @@ var testCases = [
 
 function mockAutocompl(partialSearchTerm, done) {
   var cannedResults = {
-    'hello': ['hello kitty'],
-    'meerkats': ['meerkats facts'],
-    'indio': ['indio ca'], // Should be NOT be used in joke.
-    'aliases': ['aliases band'],
-    'activism': ['activism quotes'],
-    'chandelier': ['chandelier lyrics'],
+    hello: ['hello kitty'],
+    meerkats: ['meerkats facts'],
+    indio: ['indio ca'], // Should be NOT be used in joke.
+    aliases: ['aliases band'],
+    activism: ['activism quotes'],
+    chandelier: ['chandelier lyrics'],
     'Neo-Platonism': ['neoplatonism'],
-    'bookend': ['bookends'],
-    'childishness': ['childishness quotes'],
-    'birthrate': ['birth rate']
+    bookend: ['bookends'],
+    childishness: ['childishness quotes'],
+    birthrate: ['birth rate']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }
@@ -97,13 +99,13 @@ function runTest(testCase) {
       console.log(joke);
       if (testCase.expectedErrorMessage) {
         t.equal(
-          error.message, testCase.expectedErrorMessage, 'Correct error given.'
+          error.message,
+          testCase.expectedErrorMessage,
+          'Correct error given.'
         );
-      }
-      else {
+      } else {
         t.ok(!error, 'No error while making joke.');
       }
-
 
       t.deepEqual(joke, testCase.expected, 'Joke is correct.');
     }

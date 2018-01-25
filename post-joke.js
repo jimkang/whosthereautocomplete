@@ -1,3 +1,5 @@
+/* global process */
+
 var config = require('./config');
 var callNextTick = require('call-next-tick');
 var Twit = require('twit');
@@ -8,19 +10,12 @@ var autocompl = require('autocompl');
 
 var dryRun = false;
 if (process.argv.length > 2) {
-  dryRun = (process.argv[2].toLowerCase() == '--dry');
+  dryRun = process.argv[2].toLowerCase() == '--dry';
 }
 
 var twit = new Twit(config.twitter);
 
-async.waterfall(
-  [
-    getWords,
-    makeJokeWithWord,
-    postTweet
-  ],
-  wrapUp
-);
+async.waterfall([getWords, makeJokeWithWord, postTweet], wrapUp);
 
 function getWords(done) {
   var wordnok = createWordnok({
@@ -30,23 +25,20 @@ function getWords(done) {
 }
 
 function makeJokeWithWord(words, done) {
-  debugger;
   jokeItUp(
     {
       base: words[0],
-      autocompl: autocompl
+      autocompl
     },
     done
   );
 }
 
 function postTweet(text, done) {
-  debugger;
   if (dryRun) {
     console.log('Would have tweeted:', text);
     callNextTick(done);
-  }
-  else {
+  } else {
     var body = {
       status: text
     };

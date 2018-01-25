@@ -1,6 +1,3 @@
-var dropEndPuncRegex = /\W$/;
-var dropEndPoemText = / poem$/;
-var specialTenseRegex = /^(\w+)(:?ing|ed|s) /;
 var createIsCool = require('iscool');
 var isNotAutoCompleteNoise = require('./is-not-autocomplete-noise');
 var isHyphenationVariation = require('./is-hyphenation-variation');
@@ -23,42 +20,41 @@ function jokeItUp(opts, done) {
   function makeJokeWithSuggestions(error, suggestions) {
     if (error) {
       done(error);
-    }
-    else if (!suggestions || suggestions.length < 1) {
+    } else if (!suggestions || suggestions.length < 1) {
       done(new Error('Got no suggestions.'));
-    }
-    else {
+    } else {
       var whosThere;
       suggestions = probable.shuffle(suggestions);
 
       for (var i = 0; i < suggestions.length; ++i) {
         var suggestion = suggestions[i];
-        if (suggestion !== base.toLowerCase() &&
+        if (
+          suggestion !== base.toLowerCase() &&
           !isHyphenationVariation(base, suggestion) &&
           !isPluralization(base, suggestion) &&
-          !isWhitespaceVariation(base, suggestion) &&          
+          !isWhitespaceVariation(base, suggestion) &&
           isNotAutoCompleteNoise(suggestion) &&
-          iscool(suggestion)) {
-
+          iscool(suggestion)
+        ) {
           whosThere = suggestion;
           break;
-        }        
+        }
       }
 
       if (!whosThere) {
         done(new Error('Could not find suitable suggestion.'));
-      }
-      else {
+      } else {
         done(null, formatJoke(base, whosThere));
       }
     }
   }
 }
 
-var jokeTemplate = 'Knock knock!\n' + 
-  '    Who\'s there?\n' + 
+var jokeTemplate =
+  'Knock knock!\n' +
+  "    Who's there?\n" +
   '%base%\n' +
-  '    %base% who?\n' + 
+  '    %base% who?\n' +
   '%whosthere%!';
 
 function formatJoke(base, whosThere) {

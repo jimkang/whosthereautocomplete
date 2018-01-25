@@ -17,3 +17,6 @@ test:
 
 run:
 	node post-joke.js
+
+prettier:
+	prettier --single-quote --write "**/*.js"

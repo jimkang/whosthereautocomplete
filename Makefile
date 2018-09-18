@@ -1,7 +1,7 @@
+include config.mk
+
 PROJECTNAME = whosthereautocomplete
 HOMEDIR = $(shell pwd)
-USER = bot
-SERVER = smidgeo
 SSHCMD = ssh $(USER)@$(SERVER)
 APPDIR = /opt/$(PROJECTNAME)
 

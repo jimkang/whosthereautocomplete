@@ -34,7 +34,7 @@ function makeJokeWithWord(words, done) {
 
 function postToTargets(text, done) {
   if (dryRun) {
-    console.log('Would have tweeted:', text);
+    console.log('Would have posted:', text);
   } else {
     postIt(
       {
@@ -44,14 +44,6 @@ function postToTargets(text, done) {
           {
             type: 'noteTaker',
             config: config.noteTaker
-          },
-          {
-            type: 'mastodon',
-            config: config.mastodon
-          },
-          {
-            type: 'twitter',
-            config: config.twitter
           }
         ]
       },

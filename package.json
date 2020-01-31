@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/jimkang/whosethereautocomplete",
   "devDependencies": {
-    "tape": "^3.0.3"
+    "tape": "^4.13.0"
   },
   "dependencies": {
     "@jimkang/post-it": "^1.1.1",
@@ -32,6 +32,6 @@
     "jsonfile": "^2.2.1",
     "lodash": "^3.10.0",
     "probable": "^2.0.1",
-    "wordnok": "^3.3.5"
+    "wordnok": "^3.4.1"
   }
 }

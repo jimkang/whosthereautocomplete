@@ -7,6 +7,7 @@ var autocompleteNoise = [
   'meanings',
   'definition',
   'definitions',
+  'def',
   'define',
   'dictionary',
   'synonym',
@@ -74,14 +75,40 @@ var autocompleteNoise = [
   'wy'
 ];
 
-function isNotAutoCompleteNoise(suggestion) {
+var badEndings = [
+  'summary',
+  'crossword clue',
+  'are called',
+  'pronunciation',
+  'sb',
+  'was used to'
+];
+
+var badSuffixes = ['ly', 'ing', 'y', 'ity'];
+
+function isAutoCompleteNoise(base, suggestion) {
   var lowercaseSuggestion = suggestion.toLowerCase();
   var words = lowercaseSuggestion.split(/\W/);
-  var noise = _.intersection(autocompleteNoise, words);
-  if (noise.length !== 0) {
+  var foundNoise = _.intersection(autocompleteNoise, words).length !== 0;
+  if (!foundNoise) {
+    foundNoise = badEndings.some(suggestionEndsWithWord);
+  }
+  if (!foundNoise) {
+    foundNoise = badSuffixes.some(suggestionIsJustBaseWithBadSuffix);
+  }
+
+  if (foundNoise) {
     console.log('Found noise:', suggestion);
   }
-  return noise.length === 0;
+  return foundNoise;
+
+  function suggestionEndsWithWord(word) {
+    return lowercaseSuggestion.endsWith(word);
+  }
+
+  function suggestionIsJustBaseWithBadSuffix(suffix) {
+    return base.toLowerCase() + suffix === lowercaseSuggestion;
+  }
 }
 
-module.exports = isNotAutoCompleteNoise;
+module.exports = isAutoCompleteNoise;

@@ -6,20 +6,20 @@ var testCases = [
   {
     base: 'hello',
     expected:
-      'Knock knock!\n' +
-      "    Who's there?\n" +
-      'Hello\n' +
-      '    Hello who?\n' +
+      'Knock knock!<br>' +
+      "&nbsp;&nbsp;&nbsp;&nbsp;Who's there?<br>" +
+      'Hello<br>' +
+      '&nbsp;&nbsp;&nbsp;&nbsp;Hello who?<br>' +
       'Hello kitty!',
     expectedErrorMessage: undefined
   },
   {
     base: 'meerkats',
     expected:
-      'Knock knock!\n' +
-      "    Who's there?\n" +
-      'Meerkats\n' +
-      '    Meerkats who?\n' +
+      'Knock knock!<br>' +
+      "&nbsp;&nbsp;&nbsp;&nbsp;Who's there?<br>" +
+      'Meerkats<br>' +
+      '&nbsp;&nbsp;&nbsp;&nbsp;Meerkats who?<br>' +
       'Meerkats facts!',
     expectedErrorMessage: undefined
   },
@@ -62,6 +62,16 @@ var testCases = [
     base: 'birthrate',
     expected: undefined,
     expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'bundles',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
+  },
+  {
+    base: 'official',
+    expected: undefined,
+    expectedErrorMessage: 'Could not find suitable suggestion.'
   }
 ];
 
@@ -76,7 +86,9 @@ function mockAutocompl(partialSearchTerm, done) {
     'Neo-Platonism': ['neoplatonism'],
     bookend: ['bookends'],
     childishness: ['childishness quotes'],
-    birthrate: ['birth rate']
+    birthrate: ['birth rate'],
+    bundles: ['bundles of muscle fibers are called'],
+    official: ['officially']
   };
   callNextTick(done, null, cannedResults[partialSearchTerm]);
 }

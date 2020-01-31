@@ -1,5 +1,5 @@
 var createIsCool = require('iscool');
-var isNotAutoCompleteNoise = require('./is-not-autocomplete-noise');
+var isAutoCompleteNoise = require('./is-autocomplete-noise');
 var isHyphenationVariation = require('./is-hyphenation-variation');
 var isPluralization = require('./is-pluralization');
 var isWhitespaceVariation = require('./is-whitespace-variation');
@@ -36,7 +36,7 @@ function jokeItUp(opts, done) {
           !isHyphenationVariation(base, suggestion) &&
           !isPluralization(base, suggestion) &&
           !isWhitespaceVariation(base, suggestion) &&
-          isNotAutoCompleteNoise(suggestion) &&
+          !isAutoCompleteNoise(base, suggestion) &&
           iscool(suggestion)
         ) {
           whosThere = suggestion;

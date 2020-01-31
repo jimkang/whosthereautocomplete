@@ -6,6 +6,9 @@ var isWhitespaceVariation = require('./is-whitespace-variation');
 var iscool = createIsCool();
 var probable = require('probable');
 
+const breakString = '<br>';
+const indent = '&nbsp;&nbsp;&nbsp;&nbsp;';
+
 function jokeItUp(opts, done) {
   var base;
   var autocompl;
@@ -50,11 +53,17 @@ function jokeItUp(opts, done) {
   }
 }
 
-var jokeTemplate =
-  'Knock knock!\n' +
-  "    Who's there?\n" +
-  '%base%\n' +
-  '    %base% who?\n' +
+const jokeTemplate =
+  'Knock knock!' +
+  breakString +
+  indent +
+  "Who's there?" +
+  breakString +
+  '%base%' +
+  breakString +
+  indent +
+  '%base% who?' +
+  breakString +
   '%whosthere%!';
 
 function formatJoke(base, whosThere) {
